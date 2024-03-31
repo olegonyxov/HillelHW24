@@ -1,0 +1,11 @@
+.usersMain {
+    /* width: 500px; */
+    display: flex;
+    flex-direction: column;
+}
+.add_btn {
+    width: 50px;
+}
+.hidden {
+    visibility: hidden;
+}
