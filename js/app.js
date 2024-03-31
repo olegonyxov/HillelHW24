@@ -49,14 +49,15 @@ function showUsersFunc (){
 function addNewUser(){
     user = collectData()
     if (localStorage.getItem('users')) {
+        tempList=[]
         parsedUsers = JSON.parse(localStorage.getItem('users'));
-        tempObj= []
-        for (obj of parsedUsers){
-             tempObj.push(obj)
-        }
-        tempObj.push(user) 
-        localStorage.setItem("users", JSON.stringify(tempObj));
-    } else { localStorage.setItem("users", JSON.stringify(user))}
+        localStorage.setItem("temp", JSON.stringify(user))
+        tempObj= JSON.parse(localStorage.getItem('temp'))
+        console.log(tempObj)
+        tempList.push(parsedUsers)
+        tempList.push(tempObj)
+        localStorage.setItem("users", JSON.stringify(tempList));
+    } else { localStorage.setItem("users", JSON.stringify(user))} // все равно пушит криво
     
 
 }
