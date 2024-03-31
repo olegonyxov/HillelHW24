@@ -50,8 +50,12 @@ function addNewUser(){
     user = collectData()
     if (localStorage.getItem('users')) {
         parsedUsers = JSON.parse(localStorage.getItem('users'));
-        parsedUsers.push(user) //Почему ОНО не ПУШИТ аналогичное значение???
-        localStorage.setItem("users", JSON.stringify(parsedUsers));
+        tempObj= []
+        for (obj of parsedUsers){
+             tempObj.push(obj)
+        }
+        tempObj.push(user) 
+        localStorage.setItem("users", JSON.stringify(tempObj));
     } else { localStorage.setItem("users", JSON.stringify(user))}
     
 
@@ -65,7 +69,6 @@ function viewUserFunc(){
         userLine = event.target.parentNode.textContent
         viewUser.textContent= userLine
     })
-
 }
 
 showUsersFunc()
