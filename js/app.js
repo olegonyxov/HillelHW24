@@ -55,12 +55,14 @@ function addNewUser(){
 }
 
 function viewUserFunc(){
-    view_btn= document.querySelector('.view_btn')
-    view_btn.addEventListener('click',(event)=>{
-        viewUser.classList.remove("hidden")
-        console.log("VIEW pressed")
-        userLine = event.target.parentNode.textContent
-        viewUser.textContent= userLine
+    users_Raw.addEventListener('click',(event)=>{
+        if (event.target.value === "VIEW"){
+            viewUser.classList.remove("hidden")
+            console.log("VIEW pressed")
+            userLine = event.target.parentNode.textContent
+            console.log(userLine)
+            viewUser.textContent= userLine
+        }
     })
 }
 
