@@ -27,7 +27,7 @@ function showUsersFunc (){
         let userRaw = document.createElement("ul")
         userRaw.textContent= parsedUser[user].firstName
         users_Raw.appendChild(userRaw)
-        let userDescription = document.createElement("h3")
+        let userDescription = document.createElement("li")
         userDescription.setAttribute('class', 'userDesc hidden')
         userRaw.appendChild(userDescription)
         userDescription.textContent= `${parsedUser[user].firstName},  ${parsedUser[user].lastName},  ${parsedUser[user].age} `
