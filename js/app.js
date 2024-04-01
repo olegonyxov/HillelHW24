@@ -77,7 +77,10 @@ function btnUserFunc() {
                 localStorage.setItem('users', JSON.stringify(updatedUsers));
                 userToRemove.remove();
             }
-        }
+        }else if (event.target.classList.contains('edit_btn')) {
+            console.log("EDIT pressed");
+            alert("TO EDIT just REMOVE and ADD new user ")
+        } 
     });
 }
 
