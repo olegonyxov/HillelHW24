@@ -27,6 +27,10 @@ function showUsersFunc (){
         let userRaw = document.createElement("ul")
         userRaw.textContent= parsedUser[user].firstName
         users_Raw.appendChild(userRaw)
+        let userDescription = document.createElement("h3")
+        userDescription.setAttribute('class', 'userDesc hidden')
+        userRaw.appendChild(userDescription)
+        userDescription.textContent= `${parsedUser[user].firstName},  ${parsedUser[user].lastName},  ${parsedUser[user].age} `
         let view_btn = document.createElement("input")
         view_btn.setAttribute('type',"button")
         view_btn.setAttribute('value',"VIEW")
@@ -54,16 +58,14 @@ function addNewUser(){
     localStorage.setItem("users", JSON.stringify(users));
 }
 
-function viewUserFunc(){
-    users_Raw.addEventListener('click',(event)=>{
-        if (event.target.value === "VIEW"){
-            viewUser.classList.remove("hidden")
-            console.log("VIEW pressed")
-            userLine = event.target.parentNode.textContent
-            console.log(userLine)
-            viewUser.textContent= userLine
+function viewUserFunc() {
+    users_Raw.addEventListener('click', (event) => {
+        if (event.target.classList.contains('view_btn')) {
+            console.log("VIEW pressed");
+            const userDescription = event.target.previousSibling;
+            userDescription.classList.remove('hidden');
         }
-    })
+    });
 }
 
 showUsersFunc()
