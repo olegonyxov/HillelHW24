@@ -19,14 +19,9 @@ saveUserBtn.addEventListener('click',(event)=> {
     addNewUser()
 })
 
-
-
 function showUsersFunc (){
-    
-    
     const storedUser = localStorage.getItem('users')
-    const parsedUser = JSON.parse(storedUser) 
-   
+    const parsedUser = JSON.parse(storedUser)   
     for (user in parsedUser){
         console.log(parsedUser[user])
         let userRaw = document.createElement("ul")
@@ -48,7 +43,6 @@ function showUsersFunc (){
     }    
 
 }
-
 
 function addNewUser(){
     const user = collectData();
