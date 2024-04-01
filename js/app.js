@@ -39,10 +39,12 @@ function showUsersFunc (){
         let edit_btn = document.createElement("input")
         edit_btn.setAttribute('type',"button")
         edit_btn.setAttribute('value',"EDIT")
+        edit_btn.setAttribute('class', 'edit_btn')
         userRaw.appendChild(edit_btn)
         let remove_btn = document.createElement("input")
         remove_btn.setAttribute('type',"button")
         remove_btn.setAttribute('value',"REMOVE")
+        remove_btn.setAttribute('class', 'remove_btn')
         userRaw.appendChild(remove_btn)
     }    
 
@@ -58,16 +60,22 @@ function addNewUser(){
     localStorage.setItem("users", JSON.stringify(users));
 }
 
-function viewUserFunc() {
+function btnUserFunc() {
     users_Raw.addEventListener('click', (event) => {
         if (event.target.classList.contains('view_btn')) {
             console.log("VIEW pressed");
             const userDescription = event.target.previousSibling;
             userDescription.classList.remove('hidden');
+        } else if (event.target.classList.contains('remove_btn')){
+            console.log("REMOVE pressed");
+            userToRemove = event.target.parentNode
+            userToRemove.remove()
         }
     });
 }
 
+
+
 showUsersFunc()
-viewUserFunc()
+btnUserFunc()
 
