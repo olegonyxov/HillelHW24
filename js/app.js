@@ -66,15 +66,20 @@ function btnUserFunc() {
             console.log("VIEW pressed");
             const userDescription = event.target.previousSibling;
             userDescription.classList.remove('hidden');
-        } else if (event.target.classList.contains('remove_btn')){
+        } else if (event.target.classList.contains('remove_btn')) {
             console.log("REMOVE pressed");
-            userToRemove = event.target.parentNode
-            userToRemove.remove()
+            const confirmation = confirm("Вы уверены, что хотите удалить пользователя?");
+            if (confirmation) {
+                const userToRemove = event.target.parentNode;
+                const userName = userToRemove.firstChild.textContent;
+                const storedUsers = JSON.parse(localStorage.getItem('users'));
+                const updatedUsers = storedUsers.filter(user => user.firstName !== userName);
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+                userToRemove.remove();
+            }
         }
     });
 }
-
-
 
 showUsersFunc()
 btnUserFunc()
