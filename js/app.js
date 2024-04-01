@@ -23,25 +23,29 @@ saveUserBtn.addEventListener('click',(event)=> {
 
 function showUsersFunc (){
     
-    let userRaw = document.createElement("raw")
+    
     const storedUser = localStorage.getItem('users')
-    const parsedUser = JSON.parse(storedUser)
-    // userRaw.textContent= parsedUser.firstName
-    users_Raw.appendChild(userRaw)
-    let view_btn = document.createElement("input")
-    view_btn.setAttribute('type',"button")
-    view_btn.setAttribute('value',"VIEW")
-    view_btn.setAttribute('class', 'view_btn')
-    userRaw.appendChild(view_btn)
-    let edit_btn = document.createElement("input")
-    edit_btn.setAttribute('type',"button")
-    edit_btn.setAttribute('value',"EDIT")
-    userRaw.appendChild(edit_btn)
-    let remove_btn = document.createElement("input")
-    remove_btn.setAttribute('type',"button")
-    remove_btn.setAttribute('value',"REMOVE")
-    userRaw.appendChild(remove_btn)
-     
+    const parsedUser = JSON.parse(storedUser) 
+   
+    for (user in parsedUser){
+        console.log(parsedUser[user])
+        let userRaw = document.createElement("ul")
+        userRaw.textContent= parsedUser[user].firstName
+        users_Raw.appendChild(userRaw)
+        let view_btn = document.createElement("input")
+        view_btn.setAttribute('type',"button")
+        view_btn.setAttribute('value',"VIEW")
+        view_btn.setAttribute('class', 'view_btn')
+        userRaw.appendChild(view_btn)
+        let edit_btn = document.createElement("input")
+        edit_btn.setAttribute('type',"button")
+        edit_btn.setAttribute('value',"EDIT")
+        userRaw.appendChild(edit_btn)
+        let remove_btn = document.createElement("input")
+        remove_btn.setAttribute('type',"button")
+        remove_btn.setAttribute('value',"REMOVE")
+        userRaw.appendChild(remove_btn)
+    }    
 
 }
 
